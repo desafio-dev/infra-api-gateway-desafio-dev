@@ -19,17 +19,17 @@ jobs:
           aws configure set aws_secret_access_key ${{ secrets.aws_secret_access_key }}
           aws configure set region us-east-1
 
+      - name: Navegar para a raiz do projeto
+        run: cd ../..
+
       - name: Inicializar Terraform
         run: |
-          cd ../workflow/.github
           terraform init
 
       - name: Planejar a infraestrutura
         run: |
-          cd ../workflow/.github
           terraform plan
 
       - name: Aplicar a infraestrutura
         run: |
-          cd ../workflow/.github
           terraform apply -auto-approve
