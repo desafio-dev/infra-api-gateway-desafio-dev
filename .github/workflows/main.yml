@@ -1,0 +1,22 @@
+name: Deploy para AWS
+
+on:
+  push:
+    branches:
+      - '*'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v2
+
+      - name: Configurar AWS CLI
+        run: aws configure set aws_access_key_id ${{ secrets.aws_access_key_id }} && aws configure set aws_secret_access_key ${{ secrets.aws_secret_access_key }} && aws configure set region us-east-1
+
+      - name: Inicializar o Terraform
+        run: terraform init
+
+      - name: Aplicar o Terraform
+        run: terraform apply -auto-approve
