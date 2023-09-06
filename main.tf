@@ -20,6 +20,6 @@ resource "aws_db_instance" "rds-banking" {
   engine_version       = "5.7"
   instance_class       = "db.t2.micro"
   username             = "salomao"
-  password             = "iO9ZCI9z/!"
+  password             = "iO9ZCI9z"
   parameter_group_name = "default.mysql5.7"
 }
